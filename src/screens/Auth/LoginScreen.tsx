@@ -90,7 +90,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
             leftIcon="lock-closed-outline"
           />
 
-          <TouchableOpacity className="self-end mb-6">
+          <TouchableOpacity 
+            className="self-end mb-6"
+            onPress={() => navigation.navigate('ForgotPassword')}
+          >
             <Text className="text-green-600 font-medium">Forgot Password?</Text>
           </TouchableOpacity>
 

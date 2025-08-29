@@ -11,7 +11,8 @@ A beautiful, modern e-commerce mobile application built with React Native, Expo,
 - **Shopping Cart** - Add, remove, and manage cart items
 - **Wishlist** - Save favorite products
 - **Checkout Process** - Complete checkout with address and payment
-- **User Authentication** - Login/signup functionality
+- **User Authentication** - Login/signup/forgot password functionality
+- **Password Reset** - Complete password recovery flow
 - **Profile Management** - User profile and settings
 
 ### Admin Features
