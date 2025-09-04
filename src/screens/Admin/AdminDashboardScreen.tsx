@@ -55,9 +55,7 @@ const AdminDashboardScreen: React.FC<AdminDashboardScreenProps> = ({ navigation 
       subtitle: 'View sales analytics',
       icon: 'analytics',
       color: '#E67E22',
-      onPress: () => {
-        // Navigate to analytics (not implemented)
-      },
+      onPress: () => navigation.navigate('Analytics'),
     },
   ];
 

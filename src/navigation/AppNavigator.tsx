@@ -27,6 +27,7 @@ import SearchScreen from '../screens/User/SearchScreen';
 import AdminDashboardScreen from '../screens/Admin/AdminDashboardScreen';
 import AddProductScreen from '../screens/Admin/AddProductScreen';
 import OrderManagementScreen from '../screens/Admin/OrderManagementScreen';
+import AnalyticsScreen from '../screens/Admin/AnalyticsScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -124,11 +125,12 @@ const AppNavigator = () => {
           <>
             <Stack.Screen name="AdminTabs" component={AdminTabNavigator} />
             <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+            <Stack.Screen name="Analytics" component={AnalyticsScreen} />
           </>
         ) : (
           <>
             <Stack.Screen name="UserTabs" component={UserTabNavigator} />
-            <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+            <Stack.Screen name="ProductDetail" component ={ProductDetailScreen} />
             <Stack.Screen name="Search" component={SearchScreen} />
             <Stack.Screen name="Checkout" component={CheckoutScreen} />
             <Stack.Screen name="OrderSuccess" component={OrderSuccessScreen} />

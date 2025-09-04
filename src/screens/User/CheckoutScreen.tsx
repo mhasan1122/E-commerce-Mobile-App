@@ -53,6 +53,12 @@ const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
         return;
       }
     }
+    
+    // Cash on Delivery doesn't need additional validation
+    if (selectedPayment !== 'card' && selectedPayment !== 'cash_on_delivery') {
+      Alert.alert('Error', 'This payment method is not available at the moment');
+      return;
+    }
 
     setLoading(true);
 
@@ -63,12 +69,14 @@ const CheckoutScreen: React.FC<CheckoutScreenProps> = ({ navigation }) => {
       navigation.navigate('OrderSuccess', {
         orderId: `ORD-${Date.now()}`,
         total: finalTotal,
+        paymentMethod: selectedPayment,
       });
     }, 2000);
   };
 
   const paymentMethods = [
     { id: 'card', name: 'Credit/Debit Card', icon: 'card-outline' },
+    { id: 'cash_on_delivery', name: 'Cash on Delivery', icon: 'cash-outline' },
     { id: 'paypal', name: 'PayPal', icon: 'logo-paypal' },
     { id: 'apple', name: 'Apple Pay', icon: 'logo-apple' },
   ];

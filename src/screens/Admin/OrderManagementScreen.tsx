@@ -18,6 +18,7 @@ interface Order {
   status: 'processing' | 'shipped' | 'delivered' | 'cancelled';
   address: string;
   createdAt: string;
+  paymentMethod: 'cash_on_delivery' | 'card' | 'other';
 }
 
 interface OrderManagementScreenProps {
@@ -39,6 +40,7 @@ const OrderManagementScreen: React.FC<OrderManagementScreenProps> = ({ navigatio
       status: 'processing',
       address: '123 Main St, New York, NY 10001',
       createdAt: '2024-01-15T10:30:00Z',
+      paymentMethod: 'cash_on_delivery',
     },
     {
       id: 'ORD-002',
@@ -51,6 +53,7 @@ const OrderManagementScreen: React.FC<OrderManagementScreenProps> = ({ navigatio
       status: 'shipped',
       address: '456 Oak Ave, Los Angeles, CA 90210',
       createdAt: '2024-01-14T15:45:00Z',
+      paymentMethod: 'card',
     },
     {
       id: 'ORD-003',
@@ -63,6 +66,7 @@ const OrderManagementScreen: React.FC<OrderManagementScreenProps> = ({ navigatio
       status: 'delivered',
       address: '789 Pine St, Chicago, IL 60601',
       createdAt: '2024-01-13T09:15:00Z',
+      paymentMethod: 'cash_on_delivery',
     },
     {
       id: 'ORD-004',
@@ -76,6 +80,7 @@ const OrderManagementScreen: React.FC<OrderManagementScreenProps> = ({ navigatio
       status: 'processing',
       address: '321 Elm St, Miami, FL 33101',
       createdAt: '2024-01-12T14:20:00Z',
+      paymentMethod: 'cash_on_delivery',
     },
   ]);
 
@@ -192,10 +197,13 @@ const OrderManagementScreen: React.FC<OrderManagementScreenProps> = ({ navigatio
         <Text className="text-gray-600 text-sm">{order.address}</Text>
       </View>
 
-      {/* Order Date */}
+      {/* Order Date and Payment Method */}
       <View className="mb-3">
         <Text className="text-gray-500 text-sm">
           Ordered on {formatDate(order.createdAt)}
+        </Text>
+        <Text className="text-gray-500 text-sm mt-1">
+          Payment Method: {order.paymentMethod === 'cash_on_delivery' ? 'Cash on Delivery' : order.paymentMethod === 'card' ? 'Card' : 'Other'}
         </Text>
       </View>
 
