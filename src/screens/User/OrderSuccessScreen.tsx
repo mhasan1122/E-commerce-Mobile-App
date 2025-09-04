@@ -3,16 +3,7 @@ import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '../../components/Button';
-
-interface OrderSuccessScreenProps {
-  navigation: any;
-  route: {
-    params: {
-      orderId: string;
-      total: number;
-    };
-  };
-}
+import { OrderSuccessScreenProps } from '../../types/navigation';
 
 const OrderSuccessScreen: React.FC<OrderSuccessScreenProps> = ({ navigation, route }) => {
   const { orderId, total } = route.params;

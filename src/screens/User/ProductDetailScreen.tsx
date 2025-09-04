@@ -12,14 +12,7 @@ import { Product } from '../../types';
 
 const { width } = Dimensions.get('window');
 
-interface ProductDetailScreenProps {
-  navigation: any;
-  route: {
-    params: {
-      product: Product;
-    };
-  };
-}
+import { ProductDetailScreenProps } from '../../types/navigation';
 
 const ProductDetailScreen: React.FC<ProductDetailScreenProps> = ({ navigation, route }) => {
   const { product } = route.params;

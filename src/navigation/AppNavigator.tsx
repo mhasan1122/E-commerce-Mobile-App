@@ -29,14 +29,19 @@ import AddProductScreen from '../screens/Admin/AddProductScreen';
 import OrderManagementScreen from '../screens/Admin/OrderManagementScreen';
 import AnalyticsScreen from '../screens/Admin/AnalyticsScreen';
 
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+import { RootStackParamList } from '../types/navigation';
+
+const Stack = createStackNavigator<RootStackParamList>();
+import { UserTabParamList, AdminTabParamList } from '../types/navigation';
+
+const UserTab = createBottomTabNavigator<UserTabParamList>();
+const AdminTab = createBottomTabNavigator<AdminTabParamList>();
 
 const UserTabNavigator = () => {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+    <UserTab.Navigator
+      screenOptions={({ route }: { route: { name: keyof UserTabParamList } }) => ({
+        tabBarIcon: ({ focused, color, size }: { focused: boolean; color: string; size: number }) => {
           let iconName: keyof typeof Ionicons.glyphMap;
 
           if (route.name === 'Home') {
@@ -62,19 +67,19 @@ const UserTabNavigator = () => {
         headerShown: false,
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Wishlist" component={WishlistScreen} />
-      <Tab.Screen name="Cart" component={CartScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-    </Tab.Navigator>
+      <UserTab.Screen name="Home" component={HomeScreen} />
+      <UserTab.Screen name="Wishlist" component={WishlistScreen} />
+      <UserTab.Screen name="Cart" component={CartScreen} />
+      <UserTab.Screen name="Profile" component={ProfileScreen} />
+    </UserTab.Navigator>
   );
 };
 
 const AdminTabNavigator = () => {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+    <AdminTab.Navigator
+      screenOptions={({ route }: { route: { name: keyof AdminTabParamList } }) => ({
+        tabBarIcon: ({ focused, color, size }: { focused: boolean; color: string; size: number }) => {
           let iconName: keyof typeof Ionicons.glyphMap;
 
           if (route.name === 'Dashboard') {
@@ -100,11 +105,11 @@ const AdminTabNavigator = () => {
         headerShown: false,
       })}
     >
-      <Tab.Screen name="Dashboard" component={AdminDashboardScreen} />
-      <Tab.Screen name="Products" component={AddProductScreen} />
-      <Tab.Screen name="Orders" component={OrderManagementScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-    </Tab.Navigator>
+      <AdminTab.Screen name="Dashboard" component={AdminDashboardScreen} />
+      <AdminTab.Screen name="Products" component={AddProductScreen} />
+      <AdminTab.Screen name="Orders" component={OrderManagementScreen} />
+      <AdminTab.Screen name="Profile" component={ProfileScreen} />
+    </AdminTab.Navigator>
   );
 };
 
